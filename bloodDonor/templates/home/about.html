@@ -1,0 +1,68 @@
+{% extends 'basic.html' %}
+
+{% block title %} About | BloodDnor {% endblock %}
+{% block aboutactive %} active {% endblock %}
+
+{% block body %}
+{% load static %}
+
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static 'img/blood.png' %}"  alt="" width="50" height="57">
+    <h1 class="display-5 fw-bold text-body-light"> Our Mission </h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"> 
+    
+At BloodDonor, our mission is to bridge the gap between blood donors and recipients, providing a seamless platform to make life-saving connections.
+      </p>
+     <!-- Buttons  
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+      </div>
+    -->
+    </div>
+  </div>
+
+  <div class="b-example-divider"></div>
+
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-body-light">Our Vision</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        We envision a world where no one has to suffer due to lack of blood.
+         Through our efforts, we aim to create a global network of compassionate donors who are always ready to step up and help.
+      </p>
+     
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="{% static 'img/about-banner.jpg' %}" class="img-fluid border rounded-3 shadow-lg mb-0" alt="Example image" width="700" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="b-example-divider"></div>
+
+  
+  <div class="text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Support Us</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">
+            Running and maintaining a platform like ours requires resources. If you believe in our mission, consider supporting us through donations or volunteering.
+<br>
+Remember to customize the content according to your website's design, tone, and goals.
+ Additionally, include any specific information about your website's features, functionalities, and any partnerships you might have with blood banks or healthcare organizations. Good luck with your blood donation website!
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-info btn-lg px-4 me-sm-3 fw-bold">Contact Us</button>
+          <button type="button" class="btn btn-outline-light btn-lg px-4">Join Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

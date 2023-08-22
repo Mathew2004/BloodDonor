@@ -1,0 +1,195 @@
+{% extends 'basic.html' %}
+
+{% block title %} Signup | BLoodDonor {% endblock %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+    
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Message!</strong> You are already Loged In 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+{% else %}
+<div class="container my-3">
+  
+
+<!---
+    <form action="/signupStatus/" method='POST' enctype="multipart/form-data"> {%csrf_token%}
+        <div class="form-group my-2">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username" autocomplete="off"
+                required>
+        </div>
+        <div class="form-group my-2">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name"
+                required>
+        </div>
+        <div class="form-group my-2">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name"
+                required>
+        </div>
+        <div class="form-group my-2">
+            <label for="bg" class="form-label">Blood Group</label>
+            <input class="form-control" list="datalistOptions" id="bg" name="bg" placeholder="Blood Group">
+            <datalist id="datalistOptions">
+                <option value="A+(ve)">
+                <option value="A-(ve)">
+                <option value="B+(ve)">
+                <option value="B-(ve)">
+                <option value="O+(ve)">
+                <option value="O-(ve)">
+                <option value="AB+(ve)">
+                <option value="AB-(ve)">
+                
+            </datalist>
+        </div>
+
+        <div class="form-group my-2">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+
+        <div class="form-group my-2">
+            <label for="phn1">Mobile Number</label>
+            <input type="tel" class="form-control" id="phn1" name="phn1" placeholder="Enter Your Last Name" required>
+        </div>
+        <div class="form-group my-2">
+            <label for="phn2">Mobile Number(If you Have two phone) </label>
+            <input type="tel" class="form-control" id="phn2" name="phn2" placeholder="Enter Your Last Name">
+        </div>
+        <div class="form-group my-2">
+            <label for="add1">Address(Present) </label>
+            <input type="text" class="form-control" id="add1" name="add1" placeholder="Enter Your Address(Present)" required>
+        </div>
+        <div class="form-group my-2">
+            <label for="add2">Address(Permarent) </label>
+            <input type="text" class="form-control" id="add2" name="add2" placeholder="Enter Your Address(Permarent)" required>
+        </div>
+        <div class="form-group my-2">
+            <label for="fblink">Facebook account link (Optional) </label>
+            <input type="text" class="form-control" id="fblink" name="fblink" placeholder="Enter Your Facebook ID link (Optional)">
+        </div>
+        <div class="form-group my-2">
+            <label for="age">Your Age</label>
+            <input type="text" class="form-control" id="age" name="age" placeholder="How Old are you?" required>
+        </div>
+       
+        <div class="form-group my-2">
+            <label for="file">Select your Photo</label>
+            <input type="file" class="form-control" id="file" name="file" placeholder="Select your Photo" required>
+        </div>
+
+        <div class="form-group my-2">
+            <label for="pass1">Choose a password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password"
+                required>
+        </div>
+        <div class="form-group my-2">
+            <label for="pass2">Confirm Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again"
+                required>
+        </div>
+
+
+   
+        <button type="submit" class="btn btn-primary my-2">Signup</button>
+    </form> -->
+
+    <div class="col-md-10 mx-auto col-lg-5">
+        
+        <form class="p-4 p-md-5 border rounded-3 bg-body-dark" method="POST" action="/signupStatus/" enctype="multipart/form-data"> {% csrf_token %}
+            <h3 class="text-center my-2 text-warning fw-bold display-6">Join Our Community </h3>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control text-dark" id="floatingInput" name="username" placeholder="Username">
+                <label for="floatingInput" class="text-dark">Username</label>
+            </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="fname" placeholder="First Name"  >
+            <label for="floatingInput" class="text-dark">First Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="lname" placeholder="Last Name" >
+            <label for="floatingInput" class="text-dark">Last Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" list="datalistOptions" id="floatingInput" name="bg" placeholder="Blood Group" >
+            <label for="floatingInput" class="text-dark">Blood Group</label>
+            <datalist id="datalistOptions">
+                <option value="A+(ve)">
+                <option value="A-(ve)">
+                <option value="B+(ve)">
+                <option value="B-(ve)">
+                <option value="O+(ve)">
+                <option value="O-(ve)">
+                <option value="AB+(ve)">
+                <option value="AB-(ve)">
+                
+            </datalist>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control text-dark" id="floatingInput" name="email" placeholder="Email" >
+            <label for="floatingInput" class="text-dark">Email </label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="tel" class="form-control text-dark" id="floatingInput" name="phn1" placeholder="Phone Number" >
+            <label for="floatingInput" class="text-dark">Phone Number</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="tel" class="form-control text-dark" id="floatingInput" name="phn2" placeholder="Phone Number(Optional)" >
+            <label for="floatingInput" class="text-dark">Phone Number(Optional)</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="add1"  placeholder="Address(Present)">
+            <label for="floatingInput" class="text-dark">Address(Present)</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="add2"  placeholder="Address(Permarent)">
+            <label for="floatingInput" class="text-dark">Address(Permarent)</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="fblink"  placeholder="Facebook Account Link(Optional)">
+            <label for="floatingInput" class="text-dark">Facebook Account Link(Optional)</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="age"  placeholder="Address(Permarent)">
+            <label for="floatingInput" class="text-dark">Age</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="file" class="form-control text-dark" id="floatingInput" name="file"  placeholder="Select your Photo">
+            <label for="floatingInput" class="text-dark">Select your Photo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control text-dark" id="floatingInput" name="pass1"  placeholder="Password">
+            <label for="floatingInput" class="text-dark">Password</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control text-dark" id="floatingInput" name="pass2"  placeholder="Confirm Password">
+            <label for="floatingInput" class="text-dark">Confirm Password</label>
+          </div>
+          
+     
+         
+          
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Signup</button>
+          <hr class="my-4">
+          
+          
+        </form>
+      </div>
+
+
+
+</div>
+
+
+{%endif%}
+
+
+
+
+
+{%endblock%}

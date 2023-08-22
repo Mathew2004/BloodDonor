@@ -1,0 +1,133 @@
+{% extends 'basic.html' %}
+
+{% block title %} Search Resuts | BLoodDonor {% endblock %}
+
+
+{% block body %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+    .card-container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 350px;
+        margin-bottom: 15px;
+        height: min-content;
+        -webkit-box-shadow: 0px 10px 13px -7px #000000, 42px 3px 0px -12px rgba(0, 0, 0, 0);
+        box-shadow: 0px 10px 13px -7px #000000, 42px 3px 0px -12px rgba(0, 0, 0, 0);
+    }
+
+    .swiper-slide .card {
+        padding: 30px 20px;
+        background-color: #161e1e7e;
+        color: #fff;
+        box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
+    }
+
+    .swiper-slide .card .description i {
+        font-size: 30px;
+        color: #0099ff;
+    }
+
+    .swiper-slide .card .description p {
+        text-align: center;
+        font-size: 16px;
+        color: rgb(58, 54, 54);
+        font-family: 'Roboto', sans-serif;
+        line-height: 25px;
+    }
+
+    .swiper-slide .card .profile {
+        padding: 20px 0px;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply;
+        clip-path: polygon(20% 0, 100% 0, 82% 90%, 0 93%);
+        text-align: center;
+    }
+
+    .swiper-slide .card .profile h4 {
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        color: #eee;
+    }
+
+    .swiper-slide .profile a {
+        text-decoration: none;
+        color: #eee;
+        padding: 5px 10px;
+        font-size: 18px
+    }
+
+    .swiper-slide .profile a:hover {
+        color: #e93b81;
+        transition: 0.3s all;
+    }
+
+    .swiper-slide .profile img {
+        height: 120px;
+        width: 120px;
+        border: 4px solid #eee;
+        border-radius: 50%;
+    }
+</style>
+{% load static%}
+
+
+
+<div class="container my-3">
+    <h2 class="text-warning"> Search Resuts:  </h2> 
+    {% if result|length < 1  %}
+    <p>No search results</p>
+        Your search Blood Groups : <b>{{query}}</b> did not find any Blood donor. <br>
+        Suggestions:
+        <ul>
+        <li>Make sure that all words are spelled correctly.</li>
+        <li>Try Suggestions keywords.</li>
+        
+        </li>
+        </ul>
+    {% endif %}
+        
+    <div class="card-container ">
+    {% for user in result %}
+
+        <div class="swiper-slide my-4">
+            <div class="card">
+                <div class="profile">
+                    <img src="/media/{{user.img}}" alt="member1">
+                    <h4>{{user.fname}} {{user.lname}}</h4>
+                    <h4 class="badge rounded-pill bg-danger">{{user.bg}}</h4>
+                </div>
+                <div class="description">
+                    <ul type="none">
+                        <li><span class="badge rounded-pill bg-danger">Phone</span> {{user.phn1}}, {{user.phn2}}</li>
+                        <li><span class="badge rounded-pill bg-danger">Email</span> {{user.email}}</li>
+
+                    </ul>
+                    <a href="/users/{{user.username}}" class="btn rounded-pill btn-primary" style="margin-left: 90px">View Profile</a>
+                </div>
+
+
+            </div>
+        </div>
+    {%endfor%}
+    </div>
+   
+    
+</div>
+
+
+
+
+
+
+{%endblock%}

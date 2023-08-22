@@ -1,0 +1,41 @@
+{% extends 'basic.html' %}
+
+{% block title %} Login | BLoodDonor {% endblock %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Message!</strong> You are already Loged In 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% else %}
+<!--Login Slide-->
+<div class="my-5">
+      <div class="col-md-10 mx-auto col-lg-5">
+        
+        <form class="p-4 p-md-5 border rounded-3 bg-body-dark" method="POST" action="/loginStatus/"> {% csrf_token %}
+            <h3 class="text-center my-3 text-warning fw-bold display-6">Login </h3>
+            <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="loginusername" placeholder="Username">
+            <label for="floatingInput" class="text-dark">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control text-dark" id="floatingInput" name="loginpassword"  placeholder="Password">
+            <label for="floatingInput" class="text-dark">Email address</label>
+          </div>
+     
+         
+          
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+          <hr class="my-4">
+          
+          
+        </form>
+      </div>
+    
+  </div>
+
+{%endif%}
+
+{% endblock %}

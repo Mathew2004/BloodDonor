@@ -1,0 +1,129 @@
+{% extends 'basic.html' %}
+
+{% block title %} 
+{%for user in profile %}
+{{user.fname}}'s Profile  | BLoodDonor 
+{%endfor%}
+{% endblock %}
+
+
+
+{% block body %}
+
+<style>
+    .container{
+        background-color: #1a1818;
+    }
+    .container .card {
+        padding: 30px 10px;
+        background-color: #1a1818;
+        color: #eee;
+        
+    }
+
+    .container .card .description i {
+        font-size: 30px;
+        color: #0099ff;
+    }
+
+    .container .card .description {
+       
+        font-size: 16px;
+        width: max-content;
+        padding: 20px;
+        color: rgb(250, 246, 246);
+        font-family: 'Roboto', sans-serif;
+    
+        box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
+    }
+    .container .card .description h3{
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 30px;
+        font-family: 'Roboto', sans-serif;
+        
+    }
+    .card .description h4{
+        font-size: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
+    .card .description h4 i{
+        color: #ffffff;
+    }
+
+    .container .card .profile {
+        padding: 10px 0px;
+        
+        text-align: center;
+    }
+
+    .container .card .profile h4 {
+        font-size: 30px;
+        font-family: 'Roboto', sans-serif;
+        color: #eee;
+    }
+    .container .card .profile h5 {
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        color: #eee;
+        margin-top: 5px;
+    }
+
+    .container .profile h4 a {
+        text-decoration: none;
+        color: aliceblue;
+        padding: 5px 10px;
+        font-size: 25px
+    }
+
+    .container .profile a:hover {
+        color: #e93b81;
+        transition: 0.3s all;
+        font-size: 25px;
+    }
+
+    .container .profile img {
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+    }
+</style>
+
+
+{%for user in profile %}
+
+<div class="container my-5">
+    <div class="card">
+        <div class="profile">
+            <img src="/media/{{user.img}}" alt="member1"> <br>
+            <h5 class="badge rounded-pill bg-danger">{{user.bg}}</h5>
+            <h4>{{user.fname}} {{user.lname}}  <a href="{{user.fblink}}" target="_blank"><i class="fa-brands fa-facebook"></i></a></h4>
+            
+           
+        </div>
+        <div class="description my-4">
+            <h3>Personal Info</h3> <hr>
+            <ul type="none">
+                <h4><i class="fa-solid fa-phone text-warning"></i>  {{user.phn1}}, {{user.phn2}}</h4>
+                <h4><i class="fa-solid fa-envelope text-warning"></i>   {{user.email}}</h4>
+                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Address (Present) </span> {{user.add1}}</h4>
+                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Address (Permarent) </span> {{user.add2}}</h4>
+                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Age :  </span> {{user.age}}</h4>
+               
+
+            </ul>
+           
+        </div>
+
+
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+
+{%endblock%}

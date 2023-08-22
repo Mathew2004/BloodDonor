@@ -1,0 +1,105 @@
+{% extends 'basic.html' %}
+
+{% block title %} Contact Us{% endblock %}
+{% block contactactive %} active {% endblock %}
+
+
+{% block body %}
+<style>
+    
+    .contact-form{
+       
+        margin-top: 10%;
+        margin-bottom: 5%;
+        width: 70%;
+        border: 1px solid #999;
+        box-shadow: 1px 2px 35px 0px rgba(0,0,0,0.87);
+-webkit-box-shadow: 1px 2px 35px 0px rgba(0,0,0,0.87);
+-moz-box-shadow: 1px 2px 35px 0px rgba(0,0,0,0.87);
+    }
+    .contact-form .form-control{
+        border-radius:1rem;
+    }
+    .contact-image{
+        text-align: center;
+    }
+    .contact-image img{
+        border-radius: 6rem;
+        width: 11%;
+        margin-top: -3%;
+        transform: rotate(29deg);
+    }
+    .contact-form form{
+        padding: 14%;
+    }
+    .contact-form form .row{
+        margin-bottom: -7%;
+    }
+    .contact-form h3{
+        margin-bottom: 8%;
+        margin-top: -10%;
+        text-align: center;
+        color: #e5e344;
+    }
+    .contact-form .btnContact {
+        width: 50%;
+        border: none;
+        border-radius: 1rem;
+        padding: 1.5%;
+        background: #dc3545;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+    }
+    .btnContactSubmit
+    {
+        width: 50%;
+        border-radius: 1rem;
+        padding: 1.5%;
+        color: #fff;
+        background-color: #0062cc;
+        border: none;
+        cursor: pointer;
+    }
+
+</style>
+    <div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            <form method="POST" action="/contact/"> {% csrf_token %}
+                <h3>Kindly share with us your thoughts or preferences</h3>
+
+               <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control my-2" placeholder="Your Name *" value="" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmail" class="form-control my-2" placeholder="Your Email *" value="{{user.email}}" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtPhone" class="form-control my-2" placeholder="Phone Number" value="" required />
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact my-3" value="Send Message"  />
+                        </div>
+                    </div>
+                </div>
+            
+           
+
+           
+            
+            
+            </form>
+</div>
+
+{% endblock %}

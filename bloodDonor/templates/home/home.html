@@ -1,0 +1,411 @@
+{% extends 'basic.html' %}
+
+{% block title %} HOME | Blood Donor {% endblock %}
+{% block homeactive %} active {% endblock %}
+
+{% block body %}
+<style>
+    /**intro**/
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500&family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400&display=swap');
+.home{
+   
+    height: max-content;
+    padding-bottom: 30px;
+
+}
+
+.clearfix .intro-info{
+    margin-top: 15%;
+
+
+}
+
+.intro-info h2 {
+    margin: 0 0 45px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.intro-info span {
+    color: #53c2ee;
+    text-transform: Capitalize;
+    font-weight: 200;
+}
+
+.btn-get-started {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 25px;
+    background-color: #6b63ff7a;
+    color: rgb(255, 254, 254);
+    padding: 10px 20px;
+    font-weight: 400;
+}
+.intro-info a:hover{
+    box-shadow: 10px 10px 10px rgb(17, 15, 15);
+    transition: 0.3s;
+    color: #fff;
+}
+.intro-img img{
+    width: 100%;
+    margin-top: 20%;
+}
+/**Wave background***/
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      /** Counter Js **/
+      @import url(//fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+
+.col-md-4 {
+  text-align: center;
+  padding-bottom: 50px;
+  border-right: 1px dashed black;
+}
+
+.col-md-4:last-child {
+  border-right: 0px solid black;
+}
+
+.counter {
+  animation-duration: 1s;
+  animation-delay: 0s;
+}
+
+i {
+  font-size: 20px !Important;
+}
+
+@media (max-width: 991px) {
+  .col-md-4 {
+    border-right: 0px dashed black;
+    border-bottom: 1px dashed black;
+    width: 50%;
+    margin: auto auto;
+  }
+  
+  .col-md-4:last-child {
+    border-bottom: 0px dashed black;
+  }
+}
+
+
+
+/****Testimonial section ****/
+
+
+
+
+   .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 300px;
+      height: max-content;
+      padding-bottom: 100px;
+    }
+
+.swiper-slide .profile {
+  
+      padding: 30px;
+      color: #fff;
+      text-align: center;
+      background-color: #0e0f1bcd;
+      padding: 10px ;
+      box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
+  border: 1px solid #ffffff;
+    }
+ .swiper-slide .profile img{
+      border: 1px solid lightpink;
+      border-radius: 50%;
+      height: 70px;
+      width: 70px;
+    }
+  .swiper-slide .profile h3{
+      font-size: 20px;
+      font-family: 'Poppins',sans-serif;
+      color: rgb(255, 255, 0);
+    }
+    .swiper-slide .profile p{
+      font-size: 14px;
+      font-family: 'Poppins',sans-serif;
+      font-style: italic;
+      color: #fff;
+    }
+
+
+
+/***End Testimonial****/
+   
+
+</style>
+
+<div class="home">
+    <section id="intro" class="clearfix" >
+            <div class="container d-flex h-100">
+              <div class="row justify-content-center align-self-center">
+                <div class="col-md-6 intro-info order-md-first order-last" data-aos="fade-right"   data-aos-duration="5.5s">
+                  <h2 class="text-warning">Empower Change Through Life-Giving Acts<span> Join Our Blood Donor Community Today!</span></h2>
+                  <div>
+                      {% if user.is_authenticated %}
+                        <a href="/users" class="btn btn-get-started scrollto">Find Blood Donor</a>
+                      {%else%}
+                            <a href="/signup" class="btn btn-get-started scrollto">Get Started</a>
+
+                      {%endif%}
+                  </div>
+                </div>
+              {% load static %}
+                <div class="col-md-6 intro-img order-md-last order-first" data-aos="fade-left" >
+                  <img src="{% static 'img/banner.svg' %}" alt="">
+                </div>
+              </div>
+
+            </div>
+
+      </section>
+</div>
+
+<div class="b-example-divider"></div>
+<!--Second Slide Join US -->
+
+<div class="container my-5">
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-light">Register: Create an account to become a registered blood donor.</h1>
+      <p class="lead">
+        <i class="fa-solid fa-quote-left"></i> Create an account to become a blood donor, and your information will be displayed on the homepage of our website. 
+        This way, when people search for specific blood groups, they can easily find your profile and contact you. <i class="fa-solid fa-quote-right"></i></p> 
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <a type="button" href="/signup/" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Join Now</a>
+        <a type="button" href="/users/" class="btn btn-outline-secondary btn-lg px-4">View All Donors</a>
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+        <img class="rounded-lg-3" src="{% static 'img/join.png' %}" alt="" width="720">
+    </div>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<!--Users Step-3-->
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="{% static 'img/donors.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-light lh-1 mb-3">Easy Accessibility: Find Donor Profile</h1>
+      <p class="lead">
+        <i class="fa-solid fa-quote-left"></i> Our user-friendly platform makes it easy to find nearby donation drives and donor profiles, complete with the donor's current location, phone number, and email.
+         This ensures that blood recipients can conveniently access the information they need to manage their blood requirements.<i class="fa-solid fa-quote-right"></i>
+      </p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="/users" class="btn btn-primary btn-lg px-4 me-md-2">Find Donor</a>
+        <a href="/" class="btn btn-outline-secondary btn-lg px-4">Search Bloods</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+
+<!--Login Slide-->
+
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="{% static 'img/story.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-light lh-1 mb-3">Share Your Story with Us</h1>
+      <p class="lead">
+         Share Your Story with Us. Your story will be displayed on the website homepage, 
+        inspiring other donors to make a difference.
+      </p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        {% if user.is_authenticated %}
+      <a href="/story/{{user.username}}" class="btn btn-primary btn-lg px-4 me-md-2">Share Now</button>
+      {%else%}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Message!</strong> Please Login to your account and Share your Story
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+      <a href="/login" class="btn btn-primary btn-lg px-4 me-md-2">Login</button>
+       {%endif%} 
+       <a href="#story" class="btn btn-outline-secondary btn-lg px-4">Others Story</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!----
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 text-body-light mb-3">Share Your Story with Us</h1>
+      <p class="col-lg-10 fs-4">
+         Share Your Story with Us. Your story will be displayed on the website homepage, inspiring other donors to make a difference.
+      </p>
+      {% if user.is_authenticated %}
+      <a href="/story/{{user.username}}" class="btn btn-primary btn-lg px-4 me-md-2">Share Now</button>
+      {%else%}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Message!</strong> Please Login to your account and Share your Story
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+      <a href="/login" class="btn btn-primary btn-lg px-4 me-md-2">Login</button>
+       {%endif%} 
+      <a href="#story" class="btn btn-outline-secondary btn-lg px-4">Others Story</a>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+     
+     <img src="{% static 'img/story.jpg' %}" height="300px" width="500px" alt="">
+    </div>
+  </div>
+</div>
+--->
+<div class="b-example-divider"></div>
+
+
+<!--Counter JS-->
+
+<div class="container my-3">
+
+  <div class="row">
+    <div class="col-md-4 border-end" >
+      <h1><span class="counter">{{profile.count}}</span></h1>
+      <h3>Total Users</h3>
+      <i class="fa fa-users fs-3"></i>
+    </div> 
+    <div class="col-md-4 border-end">
+      <h1><span class="counter">{{profile.count}}</span></h1>
+      <h3>Blood Donors </h3>
+      <i class="fa-solid fa-suitcase-medical fs-3"></i>
+    </div>
+    <div class="col-md-4">
+      <h1><span class="counter">{{story.count}}</span></h1>
+      <h3>Donor Stories</h3>
+      <i class="fa-regular fa-envelope fs-3"></i>
+    </div>
+  </div>
+
+</div>
+
+<div class="b-example-divider"></div>
+<!----Testimonial Section-->
+
+<div id="story">
+  <h2 class="text-center display-4 fw-bold lh-1 text-body-light m-3"> Donor Stories </h2>
+
+  <swiper-container class="mySwiper" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true"
+  slides-per-view="auto" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100"
+  coverflow-effect-modifier="1" coverflow-effect-slide-shadows="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+  
+  
+  
+  {% for stories in story %}
+  
+  <swiper-slide>
+    <div class="swiper-slide" >
+      <div class="profile">
+       <center> <img src="media/{{stories.imgname}}" class="my-2 " /> </center>
+          <h3 class="text-warning fs-4">{{stories.name}}</h3>
+          <p>{{stories.msg}}</p>
+          <center>
+            <a href="{{stories.fblink}}" target="_blank" class="text-light"><i class="fa-brands fa-facebook"></i></a>
+          </center>
+          
+        </div>
+    </div>
+  </swiper-slide>
+  {%endfor%}
+  
+  </swiper-container>
+  
+  <!---End Testimonial-->
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+
+
+<style>
+
+
+  swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+
+  swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: max-content;
+  }
+
+  swiper-slide img {
+    display: block;
+    width: 100%;
+  }
+</style>
+
+
+
+
+
+
+
+
+{% endblock %}
+
