@@ -18,6 +18,7 @@ urlpatterns = [
     path('story/<str:user>', views.donorStory, name='donorStory'),
     path('editprofile/', views.editProfile, name='editprofile'),
     path('uploadPic/', views.uploadPic, name='uploadPic'),
+    path('dltprofile/', views.DltProfile, name='DltProfile'),
 
 ]
 

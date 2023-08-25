@@ -93,7 +93,7 @@
 
     @media (max-width: 991px)  {
         .container .card .description {
-            width: 350px;
+            width: 330px;
         }
     }
 
@@ -126,12 +126,17 @@
               Edit <i class="fa fa-cog"></i>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/editprofile/">Edit Personal Info</a></li>
-              <li><a class="dropdown-item" href="/uploadPic/">Edit Profile Picture
+              <li><a class="dropdown-item my-1" href="/editprofile/">Edit Personal Info <i class="fa fa-pencil" aria-hidden="true"></i></a> <hr></li>
+              <li><a class="dropdown-item" href="/uploadPic/">Edit Profile Picture <i class="fa fa-camera" aria-hidden="true"></i>
                 <form action="/uploadPic/" method="POST" enctype="multipart/form-data"> {%csrf_token%}
-                    <input type="file"  name="file"> <button class="btn btn-primary" type="submit">Submit</button>
+                    <input type="file" name="file" style="width: 150px;"> <br>
+                    <button class="btn btn-primary my-1" type="submit">Submit</button>
                 </form>
               </a></li>
+              <li>
+                <a tabindex="0" href="/dltprofile/" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Delete Profile</a>
+              </li>
+             
              
             </ul>
           </div>

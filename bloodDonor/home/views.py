@@ -215,6 +215,27 @@ def uploadPic(request):
 
     return HttpResponse("ERROR")
    
+def DltProfile(request):
+
+    try:
+        UserProfile.objects.filter(username=request.user).delete()
+        u = User.objects.get(username = request.user)
+        u.delete()
+        messages.success(request, 'Your Profile Has been Deleted')
+        return redirect('/')          
+
+    except User.DoesNotExist:
+        messages.error(request, "User doesnot exist")    
+        return redirect('/')
+
+    except Exception as e: 
+        return HttpResponse(f'{e}')
+
+    
+
+
+    
+
 
 
 def search(request):
