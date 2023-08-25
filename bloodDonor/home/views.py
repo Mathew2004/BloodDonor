@@ -144,11 +144,78 @@ def handelLogout(request):
 
 def userProfile(request, user):
     profile = UserProfile.objects.filter(username=user)
-    print(profile)
-
+   
     return render(request, 'home/user-profile.html', {
         'profile':profile,
     })
+
+def editProfile(request):
+    profile = UserProfile.objects.filter(username=request.user)
+
+    if (len(profile)==0):
+        messages.warning(request, "Please login to your account")
+        return redirect('/')
+    else:
+        if(request.method == "POST"):
+            username = request.POST['username']
+            fname = request.POST['fname']
+            lname = request.POST['lname']
+            email = request.POST['email']
+            phn1 = request.POST['phn1']
+            phn2 = request.POST['phn2']
+            add1 = request.POST['add1']
+            add2 = request.POST['add2']
+            bg = request.POST['bg']
+            age = request.POST['age']
+            fblink = request.POST['fblink']
+            
+
+            UserProfile.objects.update_or_create(username=username,
+            defaults={
+                'fname':fname,
+                'lname':lname,
+                'email':email,
+                'phn1':phn1,
+                'phn2':phn2,
+                'add1':add1,
+                'add2':add2,
+                'bg':bg,
+                'age':age,
+                'fblink':fblink,
+                
+
+            })
+
+            messages.success(request, 'Your Personal Information has been Updated!')
+            return redirect(f'/users/{request.user}')
+            
+    
+
+
+        return render(request, 'home/editProfile.html',{
+                'profiles': profile
+            })
+    
+
+
+def uploadPic(request):
+
+    if(request.method == "POST"):
+        img = request.FILES['file']
+        fs = FileSystemStorage()
+        filename = fs.save(img.name, img)
+        uploaded_url = fs.url(filename)
+
+        UserProfile.objects.update_or_create(username=request.user,
+            defaults={
+                'img':filename,
+            })
+        messages.success(request, 'Your Profile Picture has been Updated!')
+        return redirect(f'/users/{request.user}')
+
+    return HttpResponse("ERROR")
+   
+
 
 def search(request):
     query = request.GET.get('Search')

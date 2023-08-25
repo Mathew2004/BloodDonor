@@ -16,12 +16,79 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
  
   </head>
-  <body>
+  <body onload="load()">
+
+    <!--Preloader-->
+    <div class="preloader">
+      <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        
+        
+    </div>
+  </div>
+
+
+
 <style>
   body{
      background-color: #0e0f1b;
      color: #fff;
   }
+
+  /**Preloader**/
+.preloader{
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+    height: 100vh;
+    width: 100%;
+   background: #000;
+  
+    background-size: cover;
+}
+ .box div {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #0994ff82 ;
+   
+    transform: rotate(39deg);
+    position: absolute;
+    top: 40%;
+    left: 1%;
+ }
+ .box div:nth-child(1){
+    top: 50%;
+    left: 55%;
+    animation: animate 5s linear infinite;
+    border: 3px solid #ff0984d2 ;
+ }
+ .box div:nth-child(2){
+    top: 50%;
+    left: 45%;
+    animation: animate 5s linear infinite;
+    border: 3px solid #fbff09ea ;
+ }
+ .box div:nth-child(3){
+    top: 50%;
+    left: 35%;
+    animation: animate 5s linear infinite;
+    border: 3px solid #09e2ffea ;
+ }
+ 
+
+ @keyframes animate {
+    0%{
+        transform: scale(0) translateY(0) rotate(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1) translateY(-90px) rotate(360deg);
+        opacity: 1;
+    }
+ }
+
   
   ::-webkit-input-placeholder {
     color: #fff;
@@ -56,6 +123,15 @@ background-color: #0e0f1b;
         vertical-align: -.125em;
         fill: currentColor;
       }
+
+
+      @media (max-width: 991px) {
+  .px-3,.mobile-nav {
+    margin-top: 10px;
+  }
+  
+
+}
 </style>
 
 
@@ -104,16 +180,16 @@ background-color: #0e0f1b;
                 <button class="btn btn-outline-warning" type="submit">Search</button>
               </form>
               {% if user.is_authenticated %}
-              <ul class="navbar-nav mr-2">
-                <li class="nav-item">
-                  <a class="btn btn-info mx-2 {% block storyactive %} {% endblock %}" href="/story/{{user.username}}">Share Story</a>
+              <ul class="navbar-nav mr-2 ">
+                <li class="nav-item ">
+                  <a class="btn btn-info mx-2 mobile-nav {% block storyactive %} {% endblock %}" href="/story/{{user.username}}">Share Story</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                     Welcome {{request.user}}</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/{{user.username}}">View Profile</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
+                    <a class="dropdown-item " href="/users/{{user.username}}">View Profile</a>
+                    <a class="dropdown-item " href="/logout">Logout</a>
       
                   </div>
                 </li>
@@ -121,8 +197,8 @@ background-color: #0e0f1b;
             </div>
             {% else %}
             <!-- Button to  trigger Login modal --> 
-                  <a class="btn rounded-pill btn-primary mx-2 px-3"  href="/login" type="submit">Login</a>
-                  <a class="btn rounded-pill btn-danger px-4" type="submit" href="/signup/">Join</a>
+                  <a class="btn rounded-pill btn-primary mx-2 px-3" href="/login" type="submit">Login</a>
+                  <a class="btn rounded-pill btn-danger px-3 " type="submit" href="/signup/">Join</a>
       
             {% endif %}
 
@@ -155,7 +231,8 @@ background-color: #0e0f1b;
 <!---Footer-->
 <hr>
 <div class="footer text-center">
-  <p>Developed by- <span class="text-warning">Evangel</span> </p>
+  <p><span class="text-light">Copyright © 2023 BloodDonor. All rights reserved.</span> <br>
+     Developed by- <a class="text-warning" href="https://www.linkedin.com/in/evangel-purification-695b69202">Evangel</a> </p>
 </div>
 
 
@@ -166,6 +243,12 @@ background-color: #0e0f1b;
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js" integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {% block js %} 
+<script>
+function load() {
+    document.querySelector(".preloader").style.display = "none";
+}
+</script>
+
 
 {% endblock %}
 

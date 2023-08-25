@@ -1,0 +1,94 @@
+{% extends 'basic.html' %}
+
+{% block title %} Edit Profile | BLoodDonor {% endblock %}
+
+{% block body %}
+
+<div class="col-md-10 mx-auto col-lg-5">
+    
+    {%for profile in profiles %}
+
+       
+        
+    <form class="p-4 p-md-5 border rounded-3 bg-body-dark" method="POST" action="/editprofile/" enctype="multipart/form-data"> {% csrf_token %}
+            <h3 class="text-center my-2 text-warning fw-bold display-6">Edit your Profile </h3>
+            <div class="form-floating mb-3">
+                <input type="hidden" class="form-control text-dark" id="floatingInput" name="username" value="{{profile.username}}" placeholder="Username">
+                <label for="floatingInput" class="text-dark">Username</label>
+            </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="fname" value="{{profile.fname}}" placeholder="First Name"  >
+            <label for="floatingInput" class="text-dark">First Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="lname" value="{{profile.lname}}" placeholder="Last Name" >
+            <label for="floatingInput" class="text-dark">Last Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" list="datalistOptions" id="floatingInput" value="{{profile.bg}}" name="bg" placeholder="Blood Group" >
+            <label for="floatingInput" class="text-dark">Blood Group</label>
+            <datalist id="datalistOptions">
+                <option value="A+(ve)">
+                <option value="A-(ve)">
+                <option value="B+(ve)">
+                <option value="B-(ve)">
+                <option value="O+(ve)">
+                <option value="O-(ve)">
+                <option value="AB+(ve)">
+                <option value="AB-(ve)">
+                
+            </datalist>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control text-dark" id="floatingInput" name="email" value="{{profile.email}}" placeholder="Email" >
+            <label for="floatingInput" class="text-dark">Email </label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="tel" class="form-control text-dark" id="floatingInput" name="phn1" value="{{profile.phn1}}" placeholder="Phone Number" >
+            <label for="floatingInput" class="text-dark">Phone Number</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="tel" class="form-control text-dark" id="floatingInput" name="phn2" value="{{profile.phn2}}" placeholder="Phone Number(Optional)" >
+            <label for="floatingInput" class="text-dark">Phone Number(Optional)</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="add1" value="{{profile.add1}}"  placeholder="Address(Present)">
+            <label for="floatingInput" class="text-dark">Address(Present)</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="add2" value="{{profile.add2}}"  placeholder="Address(Permarent)">
+            <label for="floatingInput" class="text-dark">Address(Permarent)</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="fblink" value="{{profile.fblink}}"  placeholder="Facebook Account Link(Optional)">
+            <label for="floatingInput" class="text-dark">Facebook Account Link(Optional)</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control text-dark" id="floatingInput" name="age" value="{{profile.age}}"  placeholder="Address(Permarent)">
+            <label for="floatingInput" class="text-dark">Age</label>
+        </div>
+        
+        
+        
+        
+    
+        
+        
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
+        <hr class="my-4">
+        
+        
+        </form>
+   
+
+    {%endfor%}
+
+  </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

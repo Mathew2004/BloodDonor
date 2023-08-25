@@ -11,12 +11,11 @@
 {% block body %}
 
 <style>
-    .container{
-        background-color: #1a1818;
-    }
+   
     .container .card {
         padding: 30px 10px;
-        background-color: #1a1818;
+        background-color: #0E0F1B;
+        border: 1px dotted #fff;
         color: #eee;
         
     }
@@ -33,7 +32,7 @@
         padding: 20px;
         color: rgb(250, 246, 246);
         font-family: 'Roboto', sans-serif;
-    
+        padding: 10px;
         box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
 -webkit-box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
 -moz-box-shadow: 1px 13px 17px -4px rgba(0,0,0,0.75);
@@ -58,6 +57,12 @@
         
         text-align: center;
     }
+    .container .card .profile img{
+        height: 300px;
+        width: 300px;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+    }
 
     .container .card .profile h4 {
         font-size: 30px;
@@ -78,45 +83,70 @@
         font-size: 25px
     }
 
-    .container .profile a:hover {
-        color: #e93b81;
+    .container .profile h4 a:hover {
+        color: #3b7ee9;
         transition: 0.3s all;
         font-size: 25px;
     }
 
-    .container .profile img {
-        height: 250px;
-        width: 250px;
-        border-radius: 50%;
+   
+
+    @media (max-width: 991px)  {
+        .container .card .description {
+            width: 350px;
+        }
     }
 
-    @media screen {
-        
-    }
+
+
+    /** Image Edit ***/
+
+
 
 
 </style>
 
 
-{%for user in profile %}
+{%for profiles in profile %}
 
 <div class="container my-5">
     <div class="card">
         <div class="profile">
-            <img src="/media/{{user.img}}" alt="member1"> <br>
-            <h5 class="badge rounded-pill bg-danger">{{user.bg}}</h5>
-            <h4>{{user.fname}} {{user.lname}}  <a href="{{user.fblink}}" target="_blank"><i class="fa-brands fa-facebook"></i></a></h4>
+
             
-           
+                <img src="/media/{{profiles.img}}" height="250px" width="150px" alt="Avatar" class="image" >
+
+           <!-- <img src="/media/{{profiles.img}}" alt="member1"> --> <br>
+            <h5 class="badge rounded-pill bg-danger">{{profiles.bg}}</h5>
+            <h4>{{profiles.fname}} {{profiles.lname}}  <a href="{{profiles.fblink}}" target="_blank"><i class="fa-brands fa-facebook"></i></a></h4>
+          
+          {% if profiles.username == user.username %}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Edit <i class="fa fa-cog"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/editprofile/">Edit Personal Info</a></li>
+              <li><a class="dropdown-item" href="/uploadPic/">Edit Profile Picture
+                <form action="/uploadPic/" method="POST" enctype="multipart/form-data"> {%csrf_token%}
+                    <input type="file"  name="file"> <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+              </a></li>
+             
+            </ul>
+          </div>
+          
+          {% endif %}
+         
         </div>
         <div class="description my-4">
             <h3>Personal Info</h3> <hr>
             <ul type="none">
-                <h4><i class="fa-solid fa-phone text-warning"></i>  {{user.phn1}}, {{user.phn2}}</h4>
-                <h4><i class="fa-solid fa-envelope text-warning"></i>   {{user.email}}</h4>
-                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Address (Present) </span> {{user.add1}}</h4>
-                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Address (Permarent) </span> {{user.add2}}</h4>
-                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Age :  </span> {{user.age}}</h4>
+                <h4><i class="fa-solid fa-phone text-warning"></i>  {{profiles.phn1}}, {{profiles.phn2}}</h4>
+                <h4><i class="fa-solid fa-envelope text-warning"></i>   {{profiles.email}}</h4>
+                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Address (Present) </span> {{profiles.add1}}</h4>
+                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Address (Permarent) </span> {{profiles.add2}}</h4>
+                <h4><span class="badge rounded-pill bg-warning text-dark" style="font-size: 15px;">Age :  </span> {{profiles.age}}</h4>
                
 
             </ul>

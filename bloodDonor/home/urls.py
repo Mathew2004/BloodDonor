@@ -16,6 +16,8 @@ urlpatterns = [
     path('users/<str:user>', views.userProfile, name='userProfile'),
     path('search/', views.search, name='search'),
     path('story/<str:user>', views.donorStory, name='donorStory'),
+    path('editprofile/', views.editProfile, name='editprofile'),
+    path('uploadPic/', views.uploadPic, name='uploadPic'),
 
 ]
 
