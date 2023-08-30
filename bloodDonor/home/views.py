@@ -4,6 +4,7 @@ from .models import Contact, UserProfile, DonorStory
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
@@ -22,8 +23,16 @@ def about(request):
 
 def users(request):
     users = UserProfile.objects.all()
+    paginator = Paginator(users, 3)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+
+
     return render(request, 'home/users.html',{
-        'users':users
+        'users':page_obj,
+        'page_obj':page_obj,
     })
 
 def contact(request):
@@ -242,7 +251,7 @@ def search(request):
     query = request.GET.get('Search')
 
     
-    result = UserProfile.objects.filter(bg__icontains=query)|UserProfile.objects.filter(username__icontains=query)|UserProfile.objects.filter(fname__icontains=query)|UserProfile.objects.filter(lname__icontains=query)
+    result = UserProfile.objects.filter(bg__icontains=query)|UserProfile.objects.filter(add1__icontains=query)|UserProfile.objects.filter(fname__icontains=query)|UserProfile.objects.filter(lname__icontains=query)|UserProfile.objects.filter(add2__icontains=query)
 
     params={'result': result, 'query':query}
     return render(request, 'home/search.html', params)
