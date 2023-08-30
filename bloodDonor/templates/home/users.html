@@ -84,12 +84,31 @@
         border: 4px solid #eee;
         border-radius: 50%;
     }
+    .header-text{
+        background: #FCEABB;
+background: linear-gradient(to right, #FCEABB 0%, #FCCD4D 37%, #F8B500 51%, #FBDF93 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+
+
+    }
+
+
 </style>
 {% load static%}
 
 
 
+<div class="container">
+    <h1 class="header-text my-3">All Blood Donors ({{pageRange.count}}) </h1>
+</div>
+
+
+
 <div class="container my-3">
+
+    
 
     {% for user in users %}
 
@@ -125,11 +144,15 @@
                     <a class="page-link" href="/users/?page={{ page_obj.previous_page_number }}">Previous</a>
                 </li>
             {%endif%}
-          <li class="page-item"><a class="page-link" href="/users/?page=1">1</a></li>
-          <li class="page-item " aria-current="page">
-            <a class="page-link" href="/users/?page=2">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="/users/?page=3">3</a></li>
+
+            
+          {%for i in range%}
+
+            <li class="page-item"><a class="page-link " href="/users/?page={{i}}">{{i}}</a></li>
+
+           {%endfor%}
+       
+
           {% if page_obj.has_next %}
           <li class="page-item">
             <a class="page-link" href="/users/?page={{ page_obj.next_page_number }}">Next</a>

@@ -27,12 +27,15 @@ def users(request):
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-
+    pagerange = paginator.num_pages
+   
 
 
     return render(request, 'home/users.html',{
         'users':page_obj,
         'page_obj':page_obj,
+        'range': range(1,pagerange),
+        'pageRange': paginator
     })
 
 def contact(request):
